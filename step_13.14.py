@@ -22,7 +22,7 @@ def items_by_category(purchases):
 
 
 def expensive_purchases(purchases, min_price):
-    return [p for p in purchases if p['price'] * p['quantity']>=min_price]
+    return [p for p in purchases if p['price']>=min_price]
 
 
 def average_price_by_category(purchases):
@@ -38,7 +38,7 @@ def most_frequent_category(purchases):
     for p in purchases:
         count_in_category[p['category']] += p['quantity']
 
-    return sorted(OrderedDict(count_in_category), key= lambda x: x[1])[-1]
+    return sorted(count_in_category.items(), key= lambda x: x[1])[-1]
 
 # Выводим результаты
 print('Общая выручка:', total_revenue(purchases))
